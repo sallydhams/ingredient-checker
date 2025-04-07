@@ -1,95 +1,142 @@
 <!DOCTYPE html>
-<html>
+<html lang="en">
 <head>
-    <title>Ingredient Checker</title>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Ingredient Checker - Endocrine Disruptors & Pore Clogging Ingredients</title>
+    
+    <!-- Favicon -->
+    <link rel="icon" type="image/x-icon" href="favicon.ico">
+    
+    <!-- Meta Tags -->
+    <meta name="description" content="Check your cosmetic ingredients for endocrine disruptors and pore-clogging ingredients. Free, instant results.">
+    <meta name="keywords" content="ingredient checker, endocrine disruptors, comedogenic, pore clogging, cosmetics, skincare">
+    
+    <!-- Open Graph / Social Media -->
+    <meta property="og:title" content="Ingredient Checker - Endocrine Disruptors & Pore Clogging Ingredients">
+    <meta property="og:description" content="Check your cosmetic ingredients for endocrine disruptors and pore-clogging ingredients. Free, instant results.">
+    <meta property="og:type" content="website">
+    <meta property="og:url" content="https://sallydhams.github.io/ingredient-checker/">
+    
+    <!-- Fonts -->
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600&display=swap" rel="stylesheet">
+    
     <style>
+        :root {
+            --primary-color: #4299e1;
+            --primary-dark: #3182ce;
+            --warning-color: #e53e3e;
+            --success-color: #38a169;
+            --text-color: #2d3748;
+            --text-light: #718096;
+            --bg-color: #f6f8fd;
+            --container-bg: #ffffff;
+            --border-color: #e2e8f0;
+        }
+
+        * {
+            box-sizing: border-box;
+            margin: 0;
+            padding: 0;
+        }
+
         body {
-            font-family: 'Inter', sans-serif;
+            font-family: 'Inter', -apple-system, BlinkMacSystemFont, system-ui, sans-serif;
             max-width: 800px;
             margin: 0 auto;
             padding: 20px;
-            background: linear-gradient(135deg, #f6f8fd 0%, #f1f4f9 100%);
-            color: #2d3748;
+            background: linear-gradient(135deg, var(--bg-color) 0%, #f1f4f9 100%);
+            color: var(--text-color);
             line-height: 1.6;
             min-height: 100vh;
         }
+
         .container {
-            background-color: white;
+            background-color: var(--container-bg);
             padding: 32px;
             border-radius: 16px;
             box-shadow: 0 4px 20px rgba(0,0,0,0.05);
             margin-bottom: 40px;
         }
+
         h1 {
             color: #2c5282;
             font-size: 28px;
             margin: 0 0 24px 0;
             font-weight: 600;
+            line-height: 1.3;
         }
+
         textarea {
             width: 100%;
             height: 150px;
             margin: 16px 0;
             padding: 16px;
-            border: 2px solid #e2e8f0;
+            border: 2px solid var(--border-color);
             border-radius: 12px;
-            font-family: 'Inter', sans-serif;
+            font-family: inherit;
             font-size: 15px;
             line-height: 1.5;
             transition: all 0.3s ease;
             resize: vertical;
-            box-sizing: border-box;
         }
+
         textarea:focus {
             outline: none;
-            border-color: #4299e1;
+            border-color: var(--primary-color);
             box-shadow: 0 0 0 3px rgba(66, 153, 225, 0.15);
         }
+
         .button-group {
             display: flex;
             gap: 12px;
             margin: 20px 0;
         }
+
         button {
             padding: 12px 24px;
             border: none;
             border-radius: 10px;
             cursor: pointer;
-            font-family: 'Inter', sans-serif;
+            font-family: inherit;
             font-size: 15px;
             font-weight: 500;
             transition: all 0.2s ease;
         }
+
         button:first-child {
-            background: linear-gradient(135deg, #4299e1 0%, #3182ce 100%);
+            background: linear-gradient(135deg, var(--primary-color) 0%, var(--primary-dark) 100%);
             color: white;
         }
+
         button:first-child:hover {
             transform: translateY(-1px);
             box-shadow: 0 4px 12px rgba(66, 153, 225, 0.25);
         }
+
         button.secondary {
             background: #edf2f7;
-            color: #4a5568;
+            color: var(--text-color);
         }
+
         button.secondary:hover {
             background: #e2e8f0;
         }
+
         .results {
             margin-top: 24px;
         }
+
         .warning {
-            color: #e53e3e;
+            color: var(--warning-color);
             margin-top: 12px;
             font-weight: 500;
         }
+
         .safe {
-            color: #38a169;
+            color: var(--success-color);
             font-weight: 500;
             padding: 16px;
             background: #f0fff4;
@@ -98,32 +145,37 @@
             align-items: center;
             gap: 8px;
         }
+
         .safe:before {
             content: "✓";
             font-size: 20px;
         }
+
         .ingredients-list {
             list-style-type: none;
             padding-left: 0;
             margin: 12px 0;
         }
+
         .ingredients-list li {
             margin: 8px 0;
             padding: 12px 16px 12px 24px;
             position: relative;
             background: #fff5f5;
             border-radius: 8px;
-            color: #c53030;
+            color: var(--warning-color);
             font-size: 15px;
         }
+
         .ingredients-list li:before {
             content: "•";
             position: absolute;
             left: 10px;
-            color: #e53e3e;
+            color: var(--warning-color);
         }
+
         .section-title {
-            color: #c53030;
+            color: var(--warning-color);
             margin: 24px 0 16px 0;
             font-size: 18px;
             font-weight: 600;
@@ -131,24 +183,38 @@
             align-items: center;
             gap: 8px;
         }
+
         #loading {
             display: none;
-            color: #4a5568;
+            color: var(--text-light);
             margin: 12px 0;
             font-size: 15px;
         }
+
         .description {
-            color: #718096;
+            color: var(--text-light);
             font-size: 15px;
             margin: 12px 0;
             line-height: 1.6;
         }
+
         footer {
             text-align: center;
-            color: #718096;
+            color: var(--text-light);
             font-size: 14px;
             margin-top: 40px;
+            padding: 20px;
         }
+
+        footer a {
+            color: var(--primary-color);
+            text-decoration: none;
+        }
+
+        footer a:hover {
+            text-decoration: underline;
+        }
+
         @media (max-width: 840px) {
             body {
                 padding: 10px;
@@ -160,7 +226,49 @@
                 font-size: 24px;
             }
         }
+
+        @media (max-width: 480px) {
+            .button-group {
+                flex-direction: column;
+            }
+            button {
+                width: 100%;
+            }
+        }
+
+        /* Dark mode support */
+        @media (prefers-color-scheme: dark) {
+            :root {
+                --bg-color: #1a202c;
+                --container-bg: #2d3748;
+                --text-color: #e2e8f0;
+                --text-light: #a0aec0;
+                --border-color: #4a5568;
+            }
+
+            .safe {
+                background: #1c4532;
+            }
+
+            .ingredients-list li {
+                background: #742a2a;
+            }
+
+            textarea {
+                background-color: #2d3748;
+                color: #e2e8f0;
+            }
+        }
     </style>
+
+    <!-- Google Analytics -->
+    <script async src="https://www.googletagmanager.com/gtag/js?id=G-XXXXXXXXXX"></script>
+    <script>
+        window.dataLayer = window.dataLayer || [];
+        function gtag(){dataLayer.push(arguments);}
+        gtag('js', new Date());
+        gtag('config', 'G-XXXXXXXXXX');
+    </script>
 </head>
 <body>
     <div class="container">
@@ -178,7 +286,13 @@
         <div id="results" class="results"></div>
     </div>
 
+    <footer>
+        <p>Created by <a href="https://github.com/sallydhams" target="_blank">Sally Dhams</a> | 
+           <a href="https://github.com/sallydhams/ingredient-checker" target="_blank">View on GitHub</a></p>
+    </footer>
+
     <script>
+        // [Previous JavaScript code remains the same]
         const endocrineDisruptors = {
             "All": [
                 "Bisphenol A (BPA)", "Bisphenol S (BPS)", "Bisphenol F (BPF)", "Bisphenol AF (BPAF)",
